@@ -7,7 +7,6 @@ resource "aws_eks_cluster" "this" {
   name                      = "devops-aws"
   role_arn                  = aws_iam_role.eks-aws-role.arn
   version                   = "1.26"
-  enabled_cluster_log_types = false
 
   vpc_config {
     security_group_ids      = [aws_security_group.cluster.id]
@@ -20,7 +19,7 @@ resource "aws_eks_cluster" "this" {
 
 resource "aws_security_group" "cluster" {
   name        = "aws_eks_sg"
-  description = var.cluster_security_group_description
+  description = "security created from terraform"
   vpc_id      = "vpc-02f551fc9f5caae54"
 
 

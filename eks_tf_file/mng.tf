@@ -25,7 +25,7 @@ module "eks_managed_node_group" {
   subnet_ids                        = ["subnet-0af9a9a3639e89275","subnet-08cba8f9c128f98de","subnet-0bd73e436bd785436"]
   create_launch_template            = true
   use_custom_launch_template        = false
-  launch_template_id                = aws_launch_template.lt[0].id
+  launch_template_id                = aws_launch_template.lt.id
   create_iam_role                   = true
   iam_role_arn                      = ""
   cluster_primary_security_group_id = data.aws_eks_cluster.eks.vpc_config[0].cluster_security_group_id
@@ -39,6 +39,6 @@ module "eks_managed_node_group" {
   update_config                     = {
     max_unavailable = 1
   }
-  depends_on                        = [aws_launch_template.lt[0]]
+  depends_on                        = [aws_launch_template.lt]
 
 }
