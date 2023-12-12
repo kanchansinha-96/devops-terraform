@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: req-count
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: req-count
+  template:
+    metadata:
+      labels:
+        app: req-count
+    spec:
+      containers:
+      - name: req-count
+        image: your-docker-image:tag
+        ports:
+        - containerPort: 5000
